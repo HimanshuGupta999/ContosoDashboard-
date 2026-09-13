@@ -70,12 +70,12 @@ Project teams need document sharing and visibility in familiar areas such as tas
 - **FR-004**: The system MUST validate uploaded files against the allowed type and size limits and clearly reject unsupported or oversized files.
 - **FR-005**: The system MUST prevent unauthorized or unsafe file handling by validating the content and storing documents in a secure location with controlled access.
 - **FR-006**: Authenticated users MUST be able to view their documents in a personal document list and sort or filter the list by key fields such as category, project, and date.
-- **FR-007**: Users MUST be able to view project-related documents when they have authorized access to the project and see the relevant project document set.
+- **FR-007**: Project members MUST be able to view and download project documents by default when they have authorized access to the project, while edit and delete permissions remain restricted to the document owner, project managers, or administrators.
 - **FR-008**: The system MUST support searching for documents by title, description, tags, uploader, or associated project and return only documents the user can access.
 - **FR-009**: Users MUST be able to download or preview documents they are authorized to access.
 - **FR-010**: Users who created a document MUST be able to update its metadata and replace the uploaded file version when needed.
 - **FR-011**: Authorized users MUST be able to delete documents after confirmation, while preserving appropriate permissions for project or team ownership rules.
-- **FR-012**: Document owners MUST be able to share documents with specific users or teams and the recipients MUST receive an in-app notification.
+- **FR-012**: Document owners MUST be able to share documents with specific users or teams and the recipients MUST receive an in-app notification, with additional access granted only through explicit sharing or project membership rules.
 - **FR-013**: The system MUST surface recent document activity in dashboard and task-related views so users can quickly find relevant files.
 - **FR-014**: The platform MUST log document activities such as upload, download, deletion, and sharing for audit and reporting purposes.
 - **FR-015**: Administrators MUST be able to review document access and usage trends using reporting views that summarize activity by uploader, document type, and access patterns.
