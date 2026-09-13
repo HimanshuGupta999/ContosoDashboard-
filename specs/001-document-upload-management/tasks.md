@@ -17,9 +17,9 @@
 
 **Purpose**: Initialize the feature-specific infrastructure and shared configuration.
 
-- [ ] T001 Create the feature-specific storage and service scaffolding for document uploads in `ContosoDashboard/Services` and the application upload directory
+- [X] T001 Create the feature-specific storage and service scaffolding for document uploads in `ContosoDashboard/Services` and the application upload directory
 - [ ] T002 [P] Add upload directory, local storage configuration, and queue settings in `ContosoDashboard/appsettings.json` and `ContosoDashboard/appsettings.Development.json`
-- [ ] T003 [P] Register the document services and file storage abstractions in `ContosoDashboard/Program.cs`
+- [X] T003 [P] Register the document services and file storage abstractions in `ContosoDashboard/Program.cs`
 
 ---
 
@@ -27,12 +27,12 @@
 
 **Purpose**: Build the underlying document domain and storage model before any story can run.
 
-- [ ] T004 Create the `Document` model in `ContosoDashboard/Models/Document.cs` with `DocumentId`, `Title`, `Description`, `Category`, `ProjectId`, `UploadedByUserId`, `FileName`, `FilePath`, `FileType`, `FileSizeBytes`, `UploadedDateUtc`, `UpdatedDateUtc`, and `IsDeleted` fields
-- [ ] T005 Create the `DocumentShare` model in `ContosoDashboard/Models/DocumentShare.cs` to track shared access and explicit recipient permissions
-- [ ] T006 Create the `ActivityLog` model in `ContosoDashboard/Models/ActivityLog.cs` to capture upload, download, share, delete, and edit operations
-- [ ] T007 [P] Extend `ApplicationDbContext` in `ContosoDashboard/Data/ApplicationDbContext.cs` with `DbSet<Document>`, `DbSet<DocumentShare>`, and `DbSet<ActivityLog>` plus indexes and constraints for `DocumentId`, `ProjectId`, `UploadedByUserId`, and document audit queries
-- [ ] T008 [P] Add the `IFileStorageService` interface and `LocalFileStorageService` implementation in `ContosoDashboard/Services/IFileStorageService.cs` and `ContosoDashboard/Services/LocalFileStorageService.cs` using the required local-file storage pattern with GUID-based filenames, `UploadAsync`, `DeleteAsync`, and `DownloadAsync`
-- [ ] T009 Add the `IDocumentService` interface and `DocumentService` implementation in `ContosoDashboard/Services/IDocumentService.cs` and `ContosoDashboard/Services/DocumentService.cs` with validation, authorization, and metadata persistence logic
+- [X] T004 Create the `Document` model in `ContosoDashboard/Models/Document.cs` with `DocumentId`, `Title`, `Description`, `Category`, `ProjectId`, `UploadedByUserId`, `FileName`, `FilePath`, `FileType`, `FileSizeBytes`, `UploadedDateUtc`, `UpdatedDateUtc`, and `IsDeleted` fields
+- [X] T005 Create the `DocumentShare` model in `ContosoDashboard/Models/DocumentShare.cs` to track shared access and explicit recipient permissions
+- [X] T006 Create the `ActivityLog` model in `ContosoDashboard/Models/ActivityLog.cs` to capture upload, download, share, delete, and edit operations
+- [X] T007 [P] Extend `ApplicationDbContext` in `ContosoDashboard/Data/ApplicationDbContext.cs` with `DbSet<Document>`, `DbSet<DocumentShare>`, and `DbSet<ActivityLog>` plus indexes and constraints for `DocumentId`, `ProjectId`, `UploadedByUserId`, and document audit queries
+- [X] T008 [P] Add the `IFileStorageService` interface and `LocalFileStorageService` implementation in `ContosoDashboard/Services/IFileStorageService.cs` and `ContosoDashboard/Services/LocalFileStorageService.cs` using the required local-file storage pattern with GUID-based filenames, `UploadAsync`, `DeleteAsync`, and `DownloadAsync`
+- [X] T009 Add the `IDocumentService` interface and `DocumentService` implementation in `ContosoDashboard/Services/IDocumentService.cs` and `ContosoDashboard/Services/DocumentService.cs` with validation, authorization, and metadata persistence logic
 - [ ] T010 Add the queue publisher and scan request contract in `ContosoDashboard/Services/DocumentScanQueueService.cs` to emit `ScanQueueMessage` payloads after file upload completion
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel.
@@ -47,11 +47,11 @@
 
 ### Implementation for User Story 1
 
-- [ ] T011 [US1] Implement upload validation, type restrictions, size enforcement, and GUID-based file naming in `ContosoDashboard/Services/DocumentService.cs` for the required `Title`, `Category`, and file validation rules
-- [ ] T012 [US1] Implement the file-save and metadata-persistence flow in `ContosoDashboard/Services/DocumentService.cs` so the file is saved to disk before the document record is created and no orphaned entries remain on failure
-- [ ] T013 [US1] Create the upload form and document list page in `ContosoDashboard/Pages/Documents.razor`, including the required title/category workflow and progress/error handling for upload outcomes
-- [ ] T014 [US1] Add project and user authorization checks in `ContosoDashboard/Services/DocumentService.cs` so only authorized users can upload to project-linked documents and unauthorized access is rejected before returning data
-- [ ] T015 [US1] Add success/error notifications and user-visible upload state handling in `ContosoDashboard/Pages/Documents.razor` and `ContosoDashboard/Services/NotificationService.cs`
+- [X] T011 [US1] Implement upload validation, type restrictions, size enforcement, and GUID-based file naming in `ContosoDashboard/Services/DocumentService.cs` for the required `Title`, `Category`, and file validation rules
+- [X] T012 [US1] Implement the file-save and metadata-persistence flow in `ContosoDashboard/Services/DocumentService.cs` so the file is saved to disk before the document record is created and no orphaned entries remain on failure
+- [X] T013 [US1] Create the upload form and document list page in `ContosoDashboard/Pages/Documents.razor`, including the required title/category workflow and progress/error handling for upload outcomes
+- [X] T014 [US1] Add project and user authorization checks in `ContosoDashboard/Services/DocumentService.cs` so only authorized users can upload to project-linked documents and unauthorized access is rejected before returning data
+- [X] T015 [US1] Add success/error notifications and user-visible upload state handling in `ContosoDashboard/Pages/Documents.razor` and `ContosoDashboard/Services/NotificationService.cs`
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and independently testable.
 
