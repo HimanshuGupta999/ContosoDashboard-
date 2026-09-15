@@ -96,7 +96,11 @@
 
     @if (documents == null)
     {
-        <p><em>Loading...</em></p>
+        <p><em>Loading documents...</em></p>
+    }
+    else if (!string.IsNullOrWhiteSpace(loadError))
+    {
+        <div class="alert alert-danger">@loadError</div>
     }
     else if (!documents.Any())
     {
@@ -142,6 +146,7 @@
     private IBrowserFile? selectedFile;
     private string uploadError = string.Empty;
     private string uploadSuccess = string.Empty;
+    private string loadError = string.Empty;
     private bool isUploading;
 
     private DocumentUploadModel uploadModel = new();
@@ -166,7 +171,16 @@
 
     private async Task LoadDocuments()
     {
-        documents = await DocumentService.GetUserDocumentsAsync(currentUserId);
+        try
+        {
+            documents = await DocumentService.GetUserDocumentsAsync(currentUserId);
+            loadError = string.Empty;
+        }
+        catch (Exception)
+        {
+            documents = new List<Document>();
+            loadError = "Documents could not be loaded. Please try again.";
+        }
     }
 
     private void ToggleUploadForm()
